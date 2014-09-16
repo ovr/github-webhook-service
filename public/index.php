@@ -19,7 +19,7 @@ if (isset($_POST['Payload'])) {
             if ($parameters['secret'] == $requestInfo->hook->config->secret) {
                 $result = $parameters['callback']();
             } else {
-                echo json_encode(array('success' => false));
+                echo json_encode(array('success' => false, 'message' => 'wrong secret key'));
                 exit(1);
             }
         }
@@ -27,6 +27,6 @@ if (isset($_POST['Payload'])) {
 
     echo json_encode(array('success' => true));
 } else {
-    echo json_encode(array('success' => false));
+    echo json_encode(array('success' => false, 'message' => 'No Payload present'));
 }
 
