@@ -1,0 +1,28 @@
+<?php
+/**
+ * @author Patsura Dmitry http://github.com/ovr <talk@dmtry.me>
+ */
+
+Class Config
+{
+    protected $applicationPath;
+
+    public function __construct($applicationPath)
+    {
+        $this->applicationPath = $applicationPath;
+    }
+
+    public function toArray()
+    {
+        return array(
+            'ovr' => array(
+                'secret' => '',
+                'phalcon-module-skeleton' => array(
+                    'callback' => function() {
+                        system('cd ./../../');
+                    }
+                )
+            )
+        );
+    }
+}
