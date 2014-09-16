@@ -26,6 +26,9 @@ if (isset($_POST['payload'])) {
                     echo json_encode(array('success' => false, 'message' => 'wrong secret key'));
                     exit(1);
                 }
+            } else {
+                echo json_encode(array('success' => false, 'message' => 'Please setup secret key for project in configuration'));
+                exit(1);
             }
         } else {
             echo json_encode(array('success' => false, 'message' => 'No configuration for project: ' . $requestInfo->hook->repository->name));
