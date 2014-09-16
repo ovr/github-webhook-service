@@ -16,8 +16,8 @@ Class Config
     {
         return array(
             'ovr' => array(
-                'secret' => '',
                 'phalcon-module-skeleton' => array(
+                    'secret' => '',
                     'callback' => function() {
                         system('cd ./../../');
                     }
