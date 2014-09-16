@@ -20,7 +20,9 @@ if (isset($_POST['payload'])) {
             $parameters = $parameters[$requestInfo->repository->name];
 
             if (isset($parameters['secret'])) {
-                if ($parameters['secret'] == $requestInfo->hook->config->secret) {
+                parse_str($_SERVER['HTTP_X_HUB_SIGNATURE'], $hubSignatureStr);
+
+                if (isset($hubSignatureStr[1]) && $hubSignatureStr[1] == hash_hmac('sha1', file_get_contents('php://input'), $parameters['secret'])) {
                     $result = $parameters['callback']();
                 } else {
                     echo json_encode(array('success' => false, 'message' => 'wrong secret key'));
