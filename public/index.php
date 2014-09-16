@@ -35,6 +35,9 @@ if (isset($_POST['payload'])) {
             exit(1);
         }
 
+    } else {
+        echo json_encode(array('success' => false, 'message' => 'No config for user: ' . $requestInfo->repository->owner->login));
+        exit(1);
     }
 
     echo json_encode(array('success' => true));
