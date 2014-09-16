@@ -7,8 +7,8 @@ $appDir = __DIR__ . '/../app/';
 
 include_once $appDir . 'config.php';
 
-if (isset($_POST['Payload'])) {
-    $requestInfo = json_decode($_POST['Payload']);
+if (isset($_POST['payload'])) {
+    $requestInfo = json_decode($_POST['payload']);
 
     $config = new Config($appDir);
     $configuration = $config->toArray();
