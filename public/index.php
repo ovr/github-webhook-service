@@ -13,8 +13,8 @@ if (isset($_POST['payload'])) {
     $config = new Config($appDir);
     $configuration = $config->toArray();
 
-    if (isset($configuration[$requestInfo->repository->owner->login])) {
-        $parameters = $configuration[$requestInfo->repository->owner->login];
+    if (isset($configuration[$requestInfo->repository->owner->name])) {
+        $parameters = $configuration[$requestInfo->repository->owner->name];
 
         if (isset($parameters[$requestInfo->repository->name])) {
             $parameters = $parameters[$requestInfo->repository->name];
@@ -36,7 +36,7 @@ if (isset($_POST['payload'])) {
         }
 
     } else {
-        echo json_encode(array('success' => false, 'message' => 'No config for user: ' . $requestInfo->repository->owner->login));
+        echo json_encode(array('success' => false, 'message' => 'No config for user: ' . $requestInfo->repository->owner->name));
         exit(1);
     }
 
