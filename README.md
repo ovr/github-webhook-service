@@ -1,4 +1,4 @@
-github-webhook-service
+Github WebHook Service
 ======================
 
 > Service to fetch requests from github web hooks.
