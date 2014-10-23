@@ -8,6 +8,7 @@ $appDir = __DIR__ . '/../app/';
 include_once $appDir . 'config.php';
 
 function requestFailed($message, $code = 500) {
+    http_response_code($code);
     echo json_encode(array('success' => false, 'message' => $message));
     exit(1);
 }
