@@ -1,9 +1,9 @@
 Github WebHook Service
 ======================
 
-![](http://ovr.github.io/github-webhook-service/res/graph.png)
-
 > Service to fetch requests from github web hooks.
+
+![](http://ovr.github.io/github-webhook-service/res/graph.png)
 
 Install
 -------
