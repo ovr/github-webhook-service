@@ -7,6 +7,11 @@ $appDir = __DIR__ . '/../app/';
 
 include_once $appDir . 'config.php';
 
+function requestFailed($message, $code = 500) {
+    echo json_encode(array('success' => false, 'message' => $message));
+    exit(1);
+}
+
 if (isset($_POST['payload'])) {
     $requestInfo = json_decode($_POST['payload']);
 
@@ -25,25 +30,21 @@ if (isset($_POST['payload'])) {
                 if (isset($hubSignature['sha1']) && isset($hubSignature['sha1']) == hash_hmac('sha1', file_get_contents('php://input'), $parameters['secret'])) {
                     $result = $parameters['callback']();
                 } else {
-                    echo json_encode(array('success' => false, 'message' => 'wrong secret key'));
-                    exit(1);
+                    requestFailed('wrong secret key');
                 }
             } else {
-                echo json_encode(array('success' => false, 'message' => 'Please setup secret key for project in configuration'));
-                exit(1);
+                requestFailed('Please setup secret key for project in configuration');
             }
         } else {
-            echo json_encode(array('success' => false, 'message' => 'No configuration for project: ' . $requestInfo->hook->repository->name));
-            exit(1);
+            requestFailed('No configuration for project: ' . $requestInfo->hook->repository->name);
         }
 
     } else {
-        echo json_encode(array('success' => false, 'message' => 'No config for user: ' . $requestInfo->repository->owner->name));
-        exit(1);
+        requestFailed('No config for user: ' . $requestInfo->repository->owner->name);
     }
 
     echo json_encode(array('success' => true));
 } else {
-    echo json_encode(array('success' => false, 'message' => 'No Payload present'));
+    requestFailed('No Payload present');
 }
 
