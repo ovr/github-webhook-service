@@ -5,6 +5,15 @@ Github WebHook Service
 
 > Service to fetch requests from github web hooks.
 
+Install
+-------
+
+```bash
+git clone https://github.com/ovr/github-webhook-service.git ./wh.domain.com
+cd wh.domain.com
+cp app/config.php.dist app/config.php
+```
+
 License
 -------
 
