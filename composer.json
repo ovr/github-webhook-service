@@ -1,0 +1,12 @@
+{
+    "name": "ovr/github-webhook-service",
+    "description": "Deploy your application with github webhook",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Patsura Dmitry",
+            "email": "talk@dmtry.me"
+        }
+    ],
+    "require": {}
+}
